@@ -1,7 +1,9 @@
+#!/usr/bin/python3
+
 import parse
 
 def validate_line(line):
-    # Parse line into min and max occurrences, desired char, and password
+    # Parse line into left and right index, desired char, and password
     parsed = parse.parse("{}-{} {}: {}", line)
     indexL = int(parsed[0]) - 1 # Switch from 1-indexing to 0-indexing
     indexR = int(parsed[1]) - 1
