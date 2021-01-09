@@ -1,7 +1,9 @@
+#!/usr/bin/python3
+
 # Algorithm for two-sum, using two pointers into sorted list (one starting on left, the other on right)
 # If sum too small, increment left pointer to increase the sum
-# If sum too large, increment right pointer to decrease the sum
-# Eventually, if two numbers exist that add up to 2020, will converge on it
+# If sum too large, decrement right pointer to decrease the sum
+# Eventually, if two numbers exist that add up to 2020, they will be found
 def findpair(nums, desired_sum):
     start_index = 0
     end_index = len(nums) - 1
