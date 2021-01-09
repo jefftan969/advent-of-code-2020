@@ -26,10 +26,12 @@ bool validate_line(std::string &line) {
   char *password = new char[line.length() + 1];
 
   if(std::sscanf(line.c_str(), "%d-%d %c: %s", &min_amt, &max_amt, &desired_char, password) != 4) {
+    delete password;
     return false;
   }
 
   int char_amt = count_char(password, desired_char, line.length() + 1);
+  delete password;
   return (min_amt <= char_amt) && (char_amt <= max_amt);
 }
 

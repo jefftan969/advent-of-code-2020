@@ -11,6 +11,7 @@ bool validate_line(std::string &line) {
   char *password = new char[line.length() + 1];
 
   if(std::sscanf(line.c_str(), "%d-%d %c: %s", &indexL, &indexR, &desired_char, password) != 4) {
+    delete password;
     return false;
   }
 
@@ -19,6 +20,7 @@ bool validate_line(std::string &line) {
   indexR--;
 
   int char_amt = (password[indexL] == desired_char) + (password[indexR] == desired_char);
+  delete password;
   return (char_amt == 1);
 }
 
