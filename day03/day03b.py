@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def check_slope(slope, horizontal_offset, vertical_offset):
     width = len(slope[0]) - 1
     height = len(slope)
