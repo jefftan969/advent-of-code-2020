@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 with open('day01.txt', 'r') as f:
     # Read input from file, and sort
     nums = [int(line) for line in f]
