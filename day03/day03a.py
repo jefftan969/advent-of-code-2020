@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 horizontal_offset = 3
 vertical_offset = 1
 
