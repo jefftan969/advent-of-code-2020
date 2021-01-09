@@ -1,8 +1,10 @@
+#!/usr/bin/python3
+
 import parse
 
-# Counts occurrences of character <char> in <line>
-def count_char(line, char):
-    return sum(1 for c in line if c == char)
+# Counts occurrences of character <char> in <string>
+def count_char(string, char):
+    return sum(1 for c in string if c == char)
 
 def validate_line(line):
     # Parse line into min and max occurrences, desired char, and password
