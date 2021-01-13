@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 with open('day06.txt', 'r') as f:
     all_lines = f.read()
     group_strings = all_lines.split('\n\n')
