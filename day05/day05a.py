@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def get_seat_id(line):
     row_str = line[:7]
     col_str = line[7:]
@@ -28,5 +30,3 @@ with open('day05.txt', 'r') as f:
         if max_seat_id < seat_id:
             max_seat_id = seat_id
     print(max_seat_id)
-
-

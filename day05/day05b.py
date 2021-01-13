@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def get_seat_id(line):
     row_str = line[:7]
     col_str = line[7:]
