@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def is_between(x, low, high):
     try:
         num = int(x)
@@ -20,7 +22,7 @@ def eyr_validfn(x):
 # A number, either 150cm <= x <= 193cm or 59in <= x <= 76in
 def hgt_validfn(x):
     try:
-        height = x{:-2]
+        height = x[:-2]
         unit = x[-2:]
         if unit == 'cm':
             return is_between(height, 150, 193)

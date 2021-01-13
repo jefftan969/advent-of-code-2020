@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 with open('day04.txt', 'r') as f:
     valid_count = 0
     fields = {'byr': 0, 'iyr': 0, 'eyr': 0, 'hgt': 0, 'hcl': 0, 'ecl': 0, 'pid': 0}
