@@ -35,9 +35,9 @@ int main() {
       } else {
         // Otherwise, take intersection of current group and contents of current line
         std::set<char> intersection;
-        for(std::set<char>::iterator it = current_line.begin(); it != current_line.end(); it++) {
-          if(current_group.find(*it) != current_group.end()) {
-            intersection.insert(*it);
+        for(char c : current_line) {
+          if(current_group.find(c) != current_group.end()) {
+            intersection.insert(c);
           }
         }
         current_group.swap(intersection);
