@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def modify_program(ops, index):
     modified = list(ops)
     if modified[index] == 'nop':

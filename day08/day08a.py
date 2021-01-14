@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 with open('day08.txt', 'r') as f:
     # Parse each line into operation and argument, with array to store whether each command has been executed
     lines = f.readlines()
