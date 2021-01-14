@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import parse
 
 def parse_bag_contents(content_str):

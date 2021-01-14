@@ -1,15 +1,20 @@
+#!/usr/bin/python3
+
 import parse
 
-def parse_bag_contents(content_str):
-    plural = parse.parse("{} {} bags", content_str)
-    if plural is None:
-        singular = parse.parse("1 {} bag", content_str)
-        color = singular[0]
-        return (color, 1)
-    else:
+def parse_bag_description(description_str):
+    plural = parse.parse("{} {} bags", description_str)
+    if plural is not None:
         amount = int(plural[0])
         color = plural[1]
         return (color, amount)
+
+    singular = parse.parse("1 {} bag", description_str)
+    if singular is not None:
+        color = singular[0]
+        return (color, 1)
+    
+    return ("", 0)
 
 def parse_line(line):
     parsed = parse.parse("{} bags contain {}.", line)
@@ -19,7 +24,7 @@ def parse_line(line):
         return (bag_color, {})
     else:
         bag_content_strings = bag_content_string.split(", ")
-        bag_contents = {key:value for (key, value) in [parse_bag_contents(s) for s in bag_content_strings]}
+        bag_contents = {key:value for (key, value) in [parse_bag_description(s) for s in bag_content_strings]}
         return (bag_color, bag_contents)
 
 with open('day07.txt', 'r') as f:
@@ -35,12 +40,12 @@ with open('day07.txt', 'r') as f:
             bag_parents[bag].append(parent)
 
     # Use BFS to find all bags that eventually contain a shiny gold bag
-    queue = list(bag_parents['shiny gold'])
+    queue = ['shiny gold']
     visited = {key:False for (key, value) in bags.items()}
-    visited['shiny gold'] = True
-    valid_set = set(bag_parents['shiny gold'])
+    valid_set = set()
     while len(queue) > 0:
         elem = queue.pop()
+        print(elem)
         if not visited[elem]:
             visited[elem] = True
             valid_set = valid_set.union(set(bag_parents[elem]))
