@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # Use two-pointer method through sorted list to find a pair of numbers that add to desired sum
 def exists_pair_with_sum(nums, desired_sum):
     nums.sort()
@@ -30,8 +32,8 @@ with open('day09.txt', 'r') as f:
     # Each iteration of inner loop considers the contiguous sum that starts at a different index
     contiguous_sums = list(nums)
     for offset in range(1, len(nums)-1):
-        contiguous_sums = [(contiguous_sums[i] + nums[i+offset]) for i in range(len(contiguous_sums)-1)]
-        for i in range(len(contiguous_sums)):
+        for i in range(len(nums) - offset):
+            contiguous_sums[i] += nums[i+offset];
             if contiguous_sums[i] == invalid_num:
                 # Successfully found a contiguous sum that adds to the invalid number
                 contiguous_range = nums[i:(i+offset+1)]

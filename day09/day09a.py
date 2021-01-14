@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # Use two-pointer method through sorted list to find a pair of numbers that add to desired sum
 # To make more efficient, instead of re-sorting the entire list every time, can use a doubly linked list to
 # track the 25 immediately preceding numbers, and continually remove the oldest element and insert a new
