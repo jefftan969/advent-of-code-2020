@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 with open('day10.txt', 'r') as f:
     lines = f.readlines()
     nums = [int(line) for line in lines]
