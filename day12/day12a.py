@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import math
 
 with open('day12.txt', 'r') as f:

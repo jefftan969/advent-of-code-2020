@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import math
 
 with open('day12.txt', 'r') as f:
@@ -23,7 +25,7 @@ with open('day12.txt', 'r') as f:
             (wayX, wayY) = (wayX * math.cos(theta) - wayY * math.sin(theta), \
                             wayX * math.sin(theta) + wayY * math.cos(theta))
         elif action == 'R':
-            # Rotate (wayX, wayY) clockwise
+            # Rotate (wayX, wayY) clockwise by multiplying by 2x2 rotation matrix
             theta = -math.radians(value)
             (wayX, wayY) = (wayX * math.cos(theta) - wayY * math.sin(theta), \
                             wayX * math.sin(theta) + wayY * math.cos(theta))
