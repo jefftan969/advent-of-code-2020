@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def check_equal(seats1, seats2):
     num_rows = len(seats1)
     num_cols = len(seats1[0])

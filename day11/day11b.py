@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def check_equal(seats1, seats2):
     num_rows = len(seats1)
     num_cols = len(seats1[0])
@@ -12,31 +14,29 @@ def check_equal(seats1, seats2):
     return True
 
 # Returns whether there exists an occupied seat in the given direction from seats[row][col]
-def occupied_in_direction(seats, row, col, h_offset, v_offset):
+def occupied_in_direction(seats, row, col, row_stride, col_stride):
     num_rows = len(seats)
     num_cols = len(seats[0])
-    seek_row = row + v_offset
-    seek_col = col + h_offset
+    seek_row = row + row_stride
+    seek_col = col + col_stride
 
     while (0 <= seek_row) and (seek_row < num_rows) and (0 <= seek_col) and (seek_col < num_cols):
         if seats[seek_row][seek_col] == '#':
             return True
         elif seats[seek_row][seek_col] == 'L':
             return False
-        seek_row += v_offset
-        seek_col += h_offset
+        seek_row += row_stride
+        seek_col += col_stride
     return False
 
 # Consider the first visible seat in all eight directions
 def count_neighbors(seats, row, col):
-    return occupied_in_direction(seats, row, col, -1, 0) + \
-           occupied_in_direction(seats, row, col, -1, 1) + \
-           occupied_in_direction(seats, row, col, 0, 1) + \
-           occupied_in_direction(seats, row, col, 1, 1) + \
-           occupied_in_direction(seats, row, col, 1, 0) + \
-           occupied_in_direction(seats, row, col, 1, -1) + \
-           occupied_in_direction(seats, row, col, 0, -1) + \
-           occupied_in_direction(seats, row, col, -1, -1)
+    num_neighbors = 0
+    for row_stride in [-1,0,1]:
+        for col_stride in [-1,0,1]:
+            if row_stride != 0 or col_stride != 0:
+                num_neighbors += occupied_in_direction(seats, row, col, row_stride, col_stride)
+    return num_neighbors
     
 def apply_rules(seats):
     new_seats = [list(row) for row in seats]
@@ -51,7 +51,7 @@ def apply_rules(seats):
                     # Occupied seats that see >=5 occupied seats become empty
                     new_seats[row][col] = 'L'
                 else:
-                    # Otherwise, seat doesn't change
+                    # Otherwise, seat state doesn't change
                     new_seats[row][col] = seats[row][col]
     return new_seats
 
