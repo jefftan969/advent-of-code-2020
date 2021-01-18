@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 with open('day13.txt', 'r') as f:
     lines = f.readlines()
     start = int(lines[0])
