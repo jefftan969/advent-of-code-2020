@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import parse
 
 mem = {}
@@ -22,7 +24,7 @@ def write_to_memory(value, addrlist, scan_index):
         write_to_memory(value, addrlist, scan_index + 1)
 
 def apply_mask(value, mask):
-    value_str = format(int(value), "036b")
+    value_str = format(value, "036b")
     result_list = list(value_str)
     for i in range(len(mask)):
         if mask[i] != '0':
@@ -35,16 +37,18 @@ with open('day14.txt', 'r') as f:
     mem = {}
     for line in lines:
         mask_cmd = parse.parse("mask = {}\n", line)
-        if mask_cmd is None:
-            # If current command does not set the bitmask, interpret as a write to memory
-            mem_cmd = parse.parse("mem[{}] = {}\n", line)
+        if mask_cmd is not None:
+            # If current command sets the bitmask, replace the current bitmask
+            mask = mask_cmd[0]
+            continue
+
+        mem_cmd = parse.parse("mem[{}] = {}\n", line)
+        if mem_cmd is not None:
+            # Otherwise, interpret as a write to memory
             addr = int(mem_cmd[0])
-            value = mem_cmd[1]
+            value = int(mem_cmd[1])
             addrlist = apply_mask(addr, mask)
             write_to_memory(value, addrlist, 0)
-        else:
-            # Otherwise, replace the current bitmask
-            mask = mask_cmd[0]
 
     # Find sum of all values currently stored in memory
     print(sum(int(value_str) for value_str in mem.values()))
