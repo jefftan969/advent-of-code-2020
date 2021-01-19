@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 with open('day15.txt', 'r') as f:
     nums = [int(s) for s in f.read().strip().split(',')]
     while len(nums) < 2020:
