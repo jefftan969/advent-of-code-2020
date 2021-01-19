@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <sstream>
 #include <string>
 #include <vector>
 
@@ -9,21 +8,20 @@
 // If sum too small, increment left pointer to increase the sum
 // If sum too large, decrement right pointer to decrease the sum
 // Eventually, if two numbers exist that add up to 2020, they will be found
-template <class T>
-bool findPair(const std::vector<T> &nums, T desired_sum, T &x, T &y) {
-  typename std::vector<T>::const_iterator start_index = nums.begin();
-  typename std::vector<T>::const_iterator end_index = nums.end() - 1;
+bool findPair(const std::vector<int> &nums, int desired_sum, int &x_out, int &y_out) {
+  std::vector<int>::const_iterator start_index = nums.begin();
+  std::vector<int>::const_iterator end_index = nums.end() - 1;
   while(start_index < end_index) {
-    T x_ = *start_index;
-    T y_ = *end_index;
-    T current_sum = x_ + y_;
+    int x = *start_index;
+    int y = *end_index;
+    int current_sum = x + y;
     if(current_sum < desired_sum)
       start_index++;
     else if(current_sum > desired_sum)
       end_index--;
     else {
-      x = x_;
-      y = y_;
+      x_out = x;
+      y_out = y;
       return true;
     }
   }
@@ -35,11 +33,9 @@ int main() {
   std::ifstream file("day01.txt");
   std::string line;
   std::vector<int> nums;
-  int next_int;
 
   while(std::getline(file, line)) {
-    std::stringstream int_parser(line);
-    int_parser >> next_int;
+    int next_int = std::stoi(line);
     nums.push_back(next_int);
   }
     
@@ -55,7 +51,7 @@ int main() {
     int z = nums.back();
     nums.pop_back();
 
-    if(findPair<int>(nums, desired_sum - z, x, y)) {
+    if(findPair(nums, desired_sum - z, x, y)) {
       std::cout << x * y * z << std::endl;
       break;
     }

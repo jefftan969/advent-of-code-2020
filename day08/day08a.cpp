@@ -1,6 +1,5 @@
 #include <fstream>
 #include <iostream>
-#include <sstream>
 #include <string>
 #include <vector>
 
@@ -13,14 +12,10 @@ int main() {
   std::vector<bool> executed;
 
   // Parse each line into operation and argument, with array to store whether each command has been executed
-  int arg = 0;
   while(std::getline(file, line)) {
-    ops.push_back(line.substr(0, 3));
-
-    std::stringstream arg_ss(line.substr(4, std::string::npos));
-    arg_ss >> arg;
+    ops.push_back(line.substr(0, 3));  
+    int arg = std::stoi(line.substr(4, std::string::npos));
     args.push_back(arg);
-
     executed.push_back(false);
   }
 

@@ -1,10 +1,7 @@
-#include <cstdio>
-#include <cstring>
 #include <fstream>
 #include <iostream>
 #include <regex>
 #include <set>
-#include <sstream>
 #include <string>
 #include <unordered_map>
 #include <vector>
@@ -19,8 +16,7 @@ bool parse_plural_description(const std::string &str, int &bag_amount, std::stri
     if(plural_match.size() == 3) {
       // The first parenthesized expression is bag_amount, convert it to integer
       std::ssub_match bag_amount_match = plural_match[1];
-      std::stringstream bag_amount_ss(bag_amount_match.str());
-      bag_amount_ss >> bag_amount;
+      bag_amount = std::stoi(bag_amount_match.str());
 
       // The second parenthesized expression is bag_color, save to the given variable
       std::ssub_match bag_color_match = plural_match[2];

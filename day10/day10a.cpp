@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <fstream>
 #include <iostream>
-#include <sstream>
 #include <string>
 #include <vector>
 
@@ -10,11 +9,9 @@ int main() {
   std::ifstream file("day10.txt");
   std::string line;
   std::vector<int> nums;
-  int next_int;
 
   while(std::getline(file, line)) {
-    std::stringstream line_ss(line);
-    line_ss >> next_int;
+    int next_int = std::stoi(line);
     nums.push_back(next_int);
   }
 

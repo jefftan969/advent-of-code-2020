@@ -45,7 +45,6 @@ with open('day07.txt', 'r') as f:
     valid_set = set()
     while len(queue) > 0:
         elem = queue.pop()
-        print(elem)
         if not visited[elem]:
             visited[elem] = True
             valid_set = valid_set.union(set(bag_parents[elem]))

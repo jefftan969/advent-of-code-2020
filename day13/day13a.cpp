@@ -19,7 +19,6 @@ int main() {
   std::getline(file, line);
   std::stringstream buses_ss(line);
   std::string bus_str;
-  int bus;
 
   int min_diff = start;
   int min_bus = -1;
@@ -27,9 +26,7 @@ int main() {
   while(std::getline(buses_ss, bus_str, ',')) {
     // Extract the next bus number, if it's not 'x'
     if(bus_str != std::string("x")) {
-      std::stringstream bus_str_ss(bus_str);
-      bus_str_ss >> bus;
-
+      int bus = std::stoi(bus_str);
       int diff = (bus - (start % bus)) % bus;
       if(min_diff > diff) {
         min_diff = diff;

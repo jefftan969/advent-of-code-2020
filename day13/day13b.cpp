@@ -50,7 +50,6 @@ int main() {
   std::getline(file, line);
   std::stringstream buses_ss(line);
   std::string bus_str;
-  int bus;
 
   __int128 a = 0;
   __int128 n = 1;
@@ -59,8 +58,7 @@ int main() {
   while(std::getline(buses_ss, bus_str, ',')) {
     // Extract the next bus number, if it's not 'x'
     if(bus_str != std::string("x")) {
-      std::stringstream bus_str_ss(bus_str);
-      bus_str_ss >> bus;
+      int bus = std::stoi(bus_str);
 
       // Want to find x such that x === a_i mod n_i for all i, by repeatedly using Chinese remainder theorem
       // Here, a_i is the index of the i-th bus line and n_i is the bus number of the i-th line

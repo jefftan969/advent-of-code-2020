@@ -1,6 +1,5 @@
 #include <fstream>
 #include <iostream>
-#include <sstream>
 #include <string>
 #include <vector>
 
@@ -57,8 +56,7 @@ int main() {
   while(std::getline(file, line)) {
     ops.push_back(line.substr(0, 3));
 
-    std::stringstream arg_ss(line.substr(4, std::string::npos));
-    arg_ss >> arg;
+    int arg = std::stoi(line.substr(4, std::string::npos));
     args.push_back(arg);
 
     executed.push_back(false);

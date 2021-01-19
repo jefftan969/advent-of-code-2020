@@ -32,10 +32,7 @@ with open('day13.txt', 'r') as f:
         # Compute Bezout coefficients, find solution, and update a and n (solution from Wikipedia)
         (m, m_i) = extended_gcd(n, n_i)
         x = a*m_i*n_i + a_i*m*n
-        print("x: ", x);
         n = n*n_i
         a = x % n
-        print("a: ", a);
-        print("n: ", n);
 
     print(a)
