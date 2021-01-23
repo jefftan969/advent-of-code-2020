@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import parse
 
 def get_invalid_sum(ticket, valid_ranges):

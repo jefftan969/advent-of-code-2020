@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import parse
 
 def num_in_range(num, ranges):
