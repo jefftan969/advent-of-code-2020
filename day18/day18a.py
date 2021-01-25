@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def evaluate(expr):
     expr = expr.strip()
     try:
@@ -5,7 +7,7 @@ def evaluate(expr):
         val = int(expr)
         return val
     except ValueError:
-        # Then, look for first operator from right to left, treating parenthesized values as a single expression
+        # Then, look for first operator from right to left, treating parenthesized values as a single entity
         # Scan right to left, because operator precedence is left-to-right, and need to do action with the least
         # operator precedence first due to recursion
         paren_level = 0
