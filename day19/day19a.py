@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 def parse_rule_string(s):
     [rule, matches] = s.strip().split(': ')
     if matches[0] == '"' and matches[2] == '"':
@@ -26,8 +28,8 @@ def match_helper(rules, message, rule, index):
         for rule_seq in match_list:
             # Apply rules in sequence, where matched_indices keeps track of the list of indices at which
             # matching should continue after matching successfully up to the current rule
-            matched_indices = match_helper(rules, message, rule_seq[0], index)
-            for rule_id in range(1, len(rule_seq)):
+            matched_indices = [index]
+            for rule_id in range(len(rule_seq)):
                 new_matched_indices = []
                 for matched_index in matched_indices:
                     new_matched_indices += match_helper(rules, message, rule_seq[rule_id], matched_index)
