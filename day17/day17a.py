@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # Creates empty grid that's 1 unit larger in every direction compared to 'grid'
 def expand_grid(grid):
     (_, size_z, size_y, size_x) = grid

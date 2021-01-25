@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # Create empty grid that's 1 unit larger in every direction compared to 'grid'
 def expand_grid(grid):
     (_, size_w, size_z, size_y, size_x) = grid
@@ -33,7 +35,7 @@ def count_neighbors(grid, w, z, y, x):
     return num_neighbors
 
 with open('day17.txt', 'r') as f:
-    # Grids are 4D arrays indexed by z, y, x, w, with additional fields to hold their size
+    # Grids are 4D arrays indexed by w, z, y, x, with additional fields to hold their size
     lines = f.read().strip().split('\n')
     init_grid_cells = [list(line) for line in lines]
 
